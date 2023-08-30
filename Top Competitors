@@ -1,0 +1,6 @@
+select s.hacker_id , h.name
+from hackers h, difficulty d, challenges c, submissions s
+where s.challenge_id=c.challenge_id and d.difficulty_level = c.difficulty_level and d.score = s.score and h.hacker_id = s.hacker_id
+group by name,s.hacker_id
+having count(s.challenge_id) > 1
+ORDER BY count(S.challenge_id) DESC, S.hacker_id;
